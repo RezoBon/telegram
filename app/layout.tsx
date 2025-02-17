@@ -24,13 +24,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-    <head>
-    <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
-
-    </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <head>
+        {/* اصلاح بارگذاری اسکریپت به صورت غیرهمزمان */}
+        <script 
+          src="https://telegram.org/js/telegram-web-app.js?56" 
+          async
+        ></script>
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
     </html>
