@@ -32,6 +32,9 @@ export default function Home() {
               <li>ID: {userData.id}</li>
               <li>First Name: {userData.first_name}</li>
               <li>Last Name: {userData.last_name}</li>
+              <li>username: {userData.username}</li>
+              <li>is_premium: {userData.is_premium}</li>
+              <li>language_code: {userData.language_code}</li>
             </ul>
           </>
         ) : (
