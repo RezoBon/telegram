@@ -3,7 +3,7 @@
 import WebApp from "@twa-dev/sdk";
 import { useEffect, useState } from "react";
 
-interface UserData{
+interface UserData {
   id: number;
   first_name: string;
   last_name?: string;
@@ -13,32 +13,31 @@ interface UserData{
 }
 
 export default function Home() {
-  const [userData,setUserData] = useState<UserData | null>(null)
+  const [userData, setUserData] = useState<UserData | null>(null);
 
   useEffect(() => {
-    if(WebApp.initDataUnsafe.user){
-      setUserData(WebApp.initDataUnsafe.user as UserData)
+    // چک کردن اینکه آیا در محیط مرورگر هستیم
+    if (typeof window !== 'undefined' && WebApp.initDataUnsafe.user) {
+      setUserData(WebApp.initDataUnsafe.user as UserData);
     }
-  },[])
+  }, []);
+
   return (
     <main className="p-4">
       {
-        userData ?
-        (
+        userData ? (
           <>
-          <h1 className="text-2xl font-bold mb-40">User Data</h1>
-          <ul>
-            <li>ID: {userData.id}</li>
-            <li>First Name: {userData.first_name}</li>
-            <li>Last Name: {userData.last_name}</li>
-            
-          </ul>
+            <h1 className="text-2xl font-bold mb-40">User  Data</h1>
+            <ul>
+              <li>ID: {userData.id}</li>
+              <li>First Name: {userData.first_name}</li>
+              <li>Last Name: {userData.last_name}</li>
+            </ul>
           </>
-        ):
-        (
-          <div>Loding...</div>
+        ) : (
+          <div>Loading...</div>
         )
       }
     </main>
   );
-}
+};
